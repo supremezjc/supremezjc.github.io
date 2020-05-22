@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>nodejs安装与配置</title>
+      <link href="/2020/05/22/nodejs%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+      <url>/2020/05/22/nodejs%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<p>1.下载对应的nodejs安装包</p><a id="more"></a><p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a><br><img src="https://img-blog.csdnimg.cn/20200516104258997.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxNzMwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>  2.运行安装包，选择相关的路径，主要注意点如下选择add to path,因为这样会自动给你配置对应的环境变量，其余的都是直接下一步下一步然后install<br>  <img src="https://img-blog.csdnimg.cn/20200516104311876.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxNzMwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>    3.检验是否安装成功，执行两个命令node -v 和npm -v(这个主要高版本的nodejs会在安装的过程中自动帮你安装的，主要的作用是对Node.js依赖的包进行管理，也可以理解为用来安装/卸载Node.js需要装的东西) 分别查看版本信息<br>    <img src="https://img-blog.csdnimg.cn/20200516104323438.png" alt="在这里插入图片描述"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Nodejs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何发布文章到自己搭建的hexo博客上！</title>
       <link href="/2020/05/21/%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%E5%88%B0%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BA%E7%9A%84hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%EF%BC%81/"/>
       <url>/2020/05/21/%E5%A6%82%E4%BD%95%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0%E5%88%B0%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BA%E7%9A%84hexo%E5%8D%9A%E5%AE%A2%E4%B8%8A%EF%BC%81/</url>

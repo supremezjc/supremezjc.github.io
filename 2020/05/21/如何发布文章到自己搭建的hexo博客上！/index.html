@@ -428,6 +428,19 @@
           
             
               
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>935 words</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>3 min</p>
+    </a>
+  </div>
+
 
             
           
@@ -626,6 +639,24 @@
       
         
           
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>935 words</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>3 min</p>
+    </a>
+  </div>
+
+
+        
+      
+        
+          
   <div class="new-meta-item share -mob-share-list">
   <div class="-mob-share-list share-body">
     
@@ -679,6 +710,13 @@
         
         
           <div class="prev-next">
+            
+              <a class='prev' href='/2020/05/22/nodejs%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>nodejs安装与配置</p>
+                <p class='content'>1.下载对应的nodejs安装包
+
+https://nodejs.org/en/download/  2.运行安装包，选择相关的路径，主要注意点如下选择add to path,因为这样会自动给你...</p>
+              </a>
             
             
               <a class='next' href='/2020/05/20/%E4%BD%BF%E7%94%A8%20Github%20%E5%92%8C%20Hexo%20%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/'>
@@ -867,6 +905,23 @@
   </footer>
 
 <script>setLoadingBarProgress(80);</script>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/20/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
 
 
       <script>setLoadingBarProgress(60);</script>

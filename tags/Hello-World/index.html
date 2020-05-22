@@ -434,6 +434,19 @@
           
             
               
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fas fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>205 words</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fas fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>1 min</p>
+    </a>
+  </div>
+
 
             
           
@@ -586,7 +599,7 @@
           <li><a class="flat-box"
             title="/categories/Hexo/" href="/categories/Hexo/"
             id="categoriesHexo"
-            ><div class='name'>Hexo</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>Hexo</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E9%9A%8F%E4%BE%BF%E7%8E%A9%E7%8E%A9/" href="/categories/%E9%9A%8F%E4%BE%BF%E7%8E%A9%E7%8E%A9/"
@@ -615,7 +628,7 @@
 
 
     <div class='content'>
-      <a href="/tags/Hello-World/" style="font-size: 14px; color: #999">Hello World</a> <a href="/tags/Hexo/" style="font-size: 24px; color: #555">Hexo</a> <a href="/tags/%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/" style="font-size: 14px; color: #999">发布博客</a> <a href="/tags/%E9%9A%8F%E4%BE%BF%E7%8E%A9%E7%8E%A9/" style="font-size: 14px; color: #999">随便玩玩</a>
+      <a href="/tags/Hello-World/" style="font-size: 14px; color: #999">Hello World</a> <a href="/tags/Hexo/" style="font-size: 24px; color: #555">Hexo</a> <a href="/tags/Nodejs/" style="font-size: 14px; color: #999">Nodejs</a> <a href="/tags/%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2/" style="font-size: 14px; color: #999">发布博客</a> <a href="/tags/%E9%9A%8F%E4%BE%BF%E7%8E%A9%E7%8E%A9/" style="font-size: 14px; color: #999">随便玩玩</a>
     </div>
   </section>
 
@@ -792,6 +805,23 @@
   </footer>
 
 <script>setLoadingBarProgress(80);</script>
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("05/20/2020 17:38:00");//在此处修改你的建站时间，格式：月/日/年 时:分:秒
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
 
 
       <script>setLoadingBarProgress(60);</script>
