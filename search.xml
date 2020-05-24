@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>Win10环境+ CUDA9.0 +CUDNN7.0+TensorFlow1.7_1.6_1.5配置（亲测有效）</title>
+      <link href="/2020/05/24/Win10%E7%8E%AF%E5%A2%83+%20CUDA9.0%20+CUDNN7.0+TensorFlow1.7_1.6_1.5%E9%85%8D%E7%BD%AE%EF%BC%88%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88%EF%BC%89/"/>
+      <url>/2020/05/24/Win10%E7%8E%AF%E5%A2%83+%20CUDA9.0%20+CUDNN7.0+TensorFlow1.7_1.6_1.5%E9%85%8D%E7%BD%AE%EF%BC%88%E4%BA%B2%E6%B5%8B%E6%9C%89%E6%95%88%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>前言：很多小伙伴在选择CUDA版本和cudnn版本上有疑问，这里简短的说一下，希望能帮到各位小伙伴，我在网上看到有人说，要根据自己的显卡来选择CUDA，其实是错误的，你可以下载自己所需要的CUDA版本,这只是个驱动而已。CUDA的版本和cundd的版本要对应，不然可能会有不兼容报错。CUDA是显卡驱动程序，cundd是用来加速深度学习训练的库，在训练网络时，使用GPU加速，会调CUDA驱动和cudnn库，安装时两者要联系起来，本文的第二步，就是做这个事。</p><a id="more"></a><p>系统环境：windows10     64位</p><p>显卡：GTX1060</p><p>CUDA版本:cuda_9.0.176_win10（配套的cudnn一定要是7版本）</p><p>下载地址：<a href="https://developer.nvidia.com/cuda-90-download-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-90-download-archive</a></p><p>CUDNN版本:cudnn-9.0-windows10-x64-v7（7版本的）</p><p>下载地址：<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="noopener">https://developer.nvidia.com/cudnn</a></p><p>TensorFlow-gpu版本：TensorFlow1.7（1.6和1.5也支持）</p><p>1.下载CUDA, <a href="https://developer.nvidia.com/cuda-90-download-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-90-download-archive</a></p><p>按照自己机器的信息选择，下图是我自己机器信息：<br><img src="https://img-blog.csdnimg.cn/20191208184341759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxNzMwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>下载完之后直接点击运行，会自行安装，安装时会让你选择一个文件夹作为抽取文件临时存放，记住这不是安装文件夹，安装文件夹系统会自动安装到C盘，具体我后面会提到，临时文件夹安装完后会自动删除。</p><p>2.下载cudnn,下载地址：<a href="https://developer.nvidia.com/cudnn" target="_blank" rel="noopener">https://developer.nvidia.com/cudnn</a>，进去之后,找到对应的版本，点击Download，他会要你注册登录，然后填个问卷，才可以下载，这一步自行按照网站提示做就可以了。提交完问卷后，就可以点击下载了。以下是版本选择界面：</p><p><img src="https://img-blog.csdnimg.cn/20191208184420513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxNzMwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>勾选这个，然后选择要下载的版本，我选的是图中划线那个（应该选择7.0版本，7.1可能有些不兼容）<br><img src="https://img-blog.csdnimg.cn/20191208184416438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxNzMwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191208184439173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxNzMwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">下载完，解压cudnn,会出现四个文件，如下：<br><img src="https://img-blog.csdnimg.cn/20191208184453559.png" alt="在这里插入图片描述"><br>接下来，我们要将CUDA和CUDNN链接起来，这样CUDA才能调用CUDNN.这里有两种方法将CUDA和CUDNN链接起来</p><p>第一种：</p><p>在环境变量下面，把解压后文件的bin目录加到系统环境变量中，放在path下面，如图：</p><p><img src="https://img-blog.csdnimg.cn/20191208184503194.png" alt="在这里插入图片描述"><br>重启一下电脑，让环境变量生效，完成。</p><p>第二种：</p><p>就是把cudnn中的库加入到CUDA中，因为CUDA系统会自动安装到c盘的Program Files文件中，选择该文件夹下的NVIDIA GPUComputing Toolkit文件，一直到<br><img src="https://img-blog.csdnimg.cn/20191208184518631.png" alt="在这里插入图片描述">这个文件夹下有如下文件，我标出的这三个，和cudnn中的前三个文件是对应的如下图：<br><img src="https://img-blog.csdnimg.cn/20191208184534107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxNzMwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>接下来要做的就是，把cudnn三个文件夹中的文件，复制到CUDA相应文件夹的下面（仔细看一下就会发现他们的目录结构是一样的），完成。</p><p>3.安装TensorFlow</p><p>安装：在命令窗口中输入pip install tensorflow-gpu，</p><p>如果要安装（更新）最新的版本，可输入： pip install –upgrade tensorFlow-gpu</p><p>等待安装完成即可</p><p>4.现在CUDA,cudnn,TensorFlow都已经安装好了，可以尽情的去写TensorFlow代码啦！</p><p>（注：新手第一次使用TensorFlow-GPU版时，训练网络时应该在tf.session处做一点修改，如下：</p><p>将with tf.Session() as sess:</p><p>改为：</p><p>config = tf.ConfigProto()<br>config.gpu_options.allow_growth = True</p><p>with tf.Session(config=config) as sess:</p><p>否则可能会报错：<br><img src="https://img-blog.csdnimg.cn/20191208184545326.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxNzMwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>原因是当TensorFlow要大量使用GPU时，不会自动给其分配资源，需要手动调整。</p><p>）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> TensorFlow </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CUDA </tag>
+            
+            <tag> TensorFlow </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用清华镜像快速下载TensorFlow各版本及已安装版本查看</title>
+      <link href="/2020/05/24/%E4%BD%BF%E7%94%A8%E6%B8%85%E5%8D%8E%E9%95%9C%E5%83%8F%E5%BF%AB%E9%80%9F%E4%B8%8B%E8%BD%BDTensorFlow%E5%90%84%E7%89%88%E6%9C%AC%E5%8F%8A%E5%B7%B2%E5%AE%89%E8%A3%85%E7%89%88%E6%9C%AC%E6%9F%A5%E7%9C%8B/"/>
+      <url>/2020/05/24/%E4%BD%BF%E7%94%A8%E6%B8%85%E5%8D%8E%E9%95%9C%E5%83%8F%E5%BF%AB%E9%80%9F%E4%B8%8B%E8%BD%BDTensorFlow%E5%90%84%E7%89%88%E6%9C%AC%E5%8F%8A%E5%B7%B2%E5%AE%89%E8%A3%85%E7%89%88%E6%9C%AC%E6%9F%A5%E7%9C%8B/</url>
+      
+        <content type="html"><![CDATA[<p>使用清华镜像快速下载TensorFlow各版本：</p><a id="more"></a><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow-gpu==<span class="number">1.12</span><span class="number">.0</span> -i https://pypi.tuna.tsinghua.edu.cn/simple <span class="comment">#可改成任意版本</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> TensorFlow </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> TensorFlow </tag>
+            
+            <tag> 清华镜像 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>用python不到3秒找出1亿以内的质数</title>
+      <link href="/2020/05/24/%E7%94%A8python%E4%B8%8D%E5%88%B03%E7%A7%92%E6%89%BE%E5%87%BA1%E4%BA%BF%E4%BB%A5%E5%86%85%E7%9A%84%E8%B4%A8%E6%95%B0/"/>
+      <url>/2020/05/24/%E7%94%A8python%E4%B8%8D%E5%88%B03%E7%A7%92%E6%89%BE%E5%87%BA1%E4%BA%BF%E4%BB%A5%E5%86%85%E7%9A%84%E8%B4%A8%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<p>下面是用python不到3秒找出1亿以内的质数</p><a id="more"></a><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys, time</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_prime</span><span class="params">(upper)</span>:</span></span><br><span class="line">    <span class="string">"""找出小于upper的所有质数"""</span></span><br><span class="line">    </span><br><span class="line">    prime_list = list()</span><br><span class="line">    mid = int(np.sqrt(upper))</span><br><span class="line">    nums = np.arange(upper)</span><br><span class="line">    nums[<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        primes = nums[nums&gt;<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> primes.any():</span><br><span class="line">            p = primes[<span class="number">0</span>]</span><br><span class="line">            prime_list.append(p)</span><br><span class="line">            nums[p::p] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> p &gt; mid:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    </span><br><span class="line">    prime_list.extend(nums[nums&gt;<span class="number">0</span>].tolist())</span><br><span class="line">    <span class="keyword">return</span> prime_list</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fast_find_prime</span><span class="params">(upper, base=<span class="number">100000</span>, block=<span class="number">20000000</span>)</span>:</span></span><br><span class="line">    <span class="string">"""快速找出小于upper的所有质数"""</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> upper &lt;= base:</span><br><span class="line">        <span class="keyword">return</span> find_prime(upper)</span><br><span class="line">        </span><br><span class="line">    mid = int(np.sqrt(upper))</span><br><span class="line">    prime_list = find_prime(base)</span><br><span class="line">    prime_array = np.array(prime_list)</span><br><span class="line">    prime_array = prime_array[prime_array&lt;=mid]</span><br><span class="line">    </span><br><span class="line">    start = base</span><br><span class="line">    <span class="keyword">while</span> start &lt; upper:</span><br><span class="line">        end = start + block</span><br><span class="line">        <span class="keyword">if</span> end &gt; upper:</span><br><span class="line">            end = upper</span><br><span class="line">        print((start, end))</span><br><span class="line">        </span><br><span class="line">        prime_list.extend(process_func(start, np.copy(prime_array), (start, end)))</span><br><span class="line">        start += block</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> prime_list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_func</span><span class="params">(id, primes, task_range)</span>:</span></span><br><span class="line">    <span class="string">"""执行分块任务的函数</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    primes      - 用以剔除非质数的质数表</span></span><br><span class="line"><span class="string">    task_range  - 分块任务的数值范围</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    nums = np.arange(task_range[<span class="number">0</span>], task_range[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> primes:</span><br><span class="line">        k = (p-task_range[<span class="number">0</span>]%p)%p</span><br><span class="line">        nums[k::p] = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> nums[nums&gt;<span class="number">0</span>].tolist()</span><br><span class="line"></span><br><span class="line">upper = <span class="number">100000000</span></span><br><span class="line">t0 = time.time()</span><br><span class="line">prime_list = fast_find_prime(upper)</span><br><span class="line">t1 = time.time()</span><br><span class="line">print(<span class="string">'查找%d以内的质数耗时%0.3f秒，共找到%d个质数'</span>%(upper, t1-t0, len(prime_list)))</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20200128193049230.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDUxNzMwMQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> 数字统计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>nodejs安装与配置</title>
       <link href="/2020/05/22/nodejs%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
       <url>/2020/05/22/nodejs%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</url>
