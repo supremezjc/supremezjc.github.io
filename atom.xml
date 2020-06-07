@@ -35,9 +35,9 @@
       <category term="TensorFlow" scheme="http://yoursite.com/categories/TensorFlow/"/>
     
     
-      <category term="TensorFlow" scheme="http://yoursite.com/tags/TensorFlow/"/>
-    
       <category term="CUDA" scheme="http://yoursite.com/tags/CUDA/"/>
+    
+      <category term="TensorFlow" scheme="http://yoursite.com/tags/TensorFlow/"/>
     
   </entry>
   
