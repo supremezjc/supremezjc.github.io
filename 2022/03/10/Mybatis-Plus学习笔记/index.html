@@ -1006,6 +1006,15 @@ Spring框架以interfac...</p>
           <div id="valine_container" class="valine_thread">
             <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
           </div>
+            <!-- valine 添加一言 -->
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+            <script type="text/javascript">
+              jinrishici.load(function(result) {
+                var jrsc_plac =  result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author
+                document.getElementById("veditor").setAttribute("placeholder",jrsc_plac);
+              });
+            </script>
+
         </section>
       
       
@@ -1543,8 +1552,8 @@ setInterval("createtime()",250);
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
-<!--&lt;!&ndash; 页面点击小红心 &ndash;&gt;-->
-<!--<script type="text/javascript" src="/js/love.js"></script>-->
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>
 <!--樱花-->
 <script src="https://cdn.jsdelivr.net/gh/zyoushuo/Blog/hexo/js/sakura.js"></script>
 
