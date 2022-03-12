@@ -2178,15 +2178,18 @@ div.gallery.stretch>p img {
   background: #f1f1f1;
   box-shadow: 0px 0px 0px rgba(0,0,0,0.1), 0px 0px 0px rgba(255,255,255,0.8), inset 2px 2px 4px rgba(0,0,0,0.1), inset -2px -2px 4px #fff, inset -8px -8px 16px rgba(255,255,255,0.4);
 }
-.l_main #comments #valine_container .vwrap .vedit .vctrl span {
+.l_main #comments #valine_container .vedit .vctrl span {
   padding: 0;
   margin: 10px;
 }
-.l_main #comments #valine_container .vwrap .vedit span {
+.l_main #comments #valine_container .vedit span {
   fill: #555;
 }
-.l_main #comments #valine_container .vwrap .vedit span.actived {
+.l_main #comments #valine_container .vedit span.actived {
   fill: #2196f3;
+}
+.l_main #comments #valine_container .vedit .veditor {
+  background: url("https://cdn.jsdelivr.net/gh/zyoushuo/Blog/images/valinebg.webp") 100% 100% no-repeat;
 }
 .l_main #comments #valine_container .vcount {
   color: #555;
@@ -2218,6 +2221,12 @@ div.gallery.stretch>p img {
 .l_main #comments #valine_container button.vmore {
   width: 100%;
   padding: 8px 2rem;
+}
+.l_main #comments #valine_container .vcards .vcard {
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.12);
+  padding: 15px 20px 0 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
 }
 .l_main #comments #valine_container .vcards .vquote {
   border-left: none;
